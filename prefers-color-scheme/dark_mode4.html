@@ -5,74 +5,44 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>버튼 토글을 이용한 다크모드</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     :root,
     :root[data-theme="light"] {
-      --backgrounColor1:#fff;
-      --backgrounColor2:#efefef;
-      --backgrounColor3:#000;
-      --color1:#000;
-      --color2:#363636;
-      --color3:#0076d1;
-      --color4:#000;
+      --color1:gray;
+      --color2:#fff;
+      --color3:#000;
+      --color4:#ededed;
+      --color5:#000;
     }
 
     :root[data-theme="dark"] {
-      --backgrounColor1:#202b38;
-      --backgrounColor2:#161f27;
-      --backgrounColor3:#fff;
       --color1:#fff;
-      --color2:#dbdbdb;
-      --color3:#41adff;
-      --color4:#ffbe85;
+      --color2:#111;
+      --color3:#f9f9f9;
+      --color4:#444;
+      --color5:#9cff9c;
     }
-    body{background:var(--backgrounColor1)}
-    h1{color:var(--color1)}
-    .section{border:1px solid var(--color1);background:var(--backgrounColor1)}
-    .tit{color:var(--color1)}
-    .desc,.define{color:var(--color2)}
-    .link{color:var(--color3)}
-    code{color:var(--color4);background:var(--backgrounColor2)}
-    .tit:before{background:var(--backgrounColor3)}
-
-    /* @media (prefers-color-scheme: dark) {
-      html.dark_mode body{background:#202b38}
-      html.dark_mode .section{background:#202b38;border-color:#fff}
-      html.dark_mode .tit{color:#fff}
-      html.dark_mode .desc, html.dark_mode .define{color:#dbdbdb}
-      html.dark_mode .link{color:#41adff}
-      html.dark_mode code{padding:3px 5px;color:#ffbe85;background:#161f27;border-radius:3px}
-    } */
+    body{background:var(--color2)}
+    h1, h2, .desc{color:var(--color3)}
+    .txt_box{border:1px solid var(--color5);color:var(--color5)}
+    nav{border-bottom:1px solid var(--color1)}
+    nav li a{border:1px solid var(--color1);background:var(--color1);color:var(--color2)}
+    .btn{border:1px solid var(--color1);background:var(--color1)}
+    .btn .txt_transition{color:var(--color2)}
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 </head>
 <body>
-  <h1>prefers-color-scheme</h1>
-  <div class="section"> 
-    <h2 class="tit sub_tit">Light Theme</h2>
-    <p class="desc">
-      <strong><code>prefers-color-scheme</code></strong> 
-      <a href="/ko/docs/Web/CSS" class="link">CSS</a> 
-      <a href="/ko/docs/Web/CSS/@media#media_features" class="link">미디어 특성</a>은 사용자의 시스템이 라이트 테마나 다크 테마를 사용하는지 탐지하는 데에 사용됩니다.
-    </p>
-    <h3 class="tit">구문</h2>
-    <dl class="define">
-      <dt><code>no-preference</code></dt>
-      <dd>사용자가 시스템에 선호하는 테마를 알리지 않았음을 나타냅니다. 이 키워드 <a href="https://drafts.csswg.org/mediaqueries-5/#boolean-context" class="link">boolean context</a>에서 <code>false</code>로 판정됩니다.</dd>
-      <dt><code>light</code></dt>
-      <dd>사용자가 시스템에 라이트 테마를 사용하는 것을 선호한다고 알렸음을 나타냅니다.</dd>
-      <dt><code>dark</code></dt>
-      <dd>사용자가 시스템에 다크 테마를 사용하는 것을 선호한다고 알렸음을 나타냅니다.</dd>
-    </dl>
-    <h3 class="tit">예제</h2>
-    <p class="desc">이 예제는 검은 배경에 흰 텍스트를 가진 요소를 라이트 테마를 사용하는 사용자가 볼 경우 색을 반대로 해서 나타냅니다.</p>
-  </div>
-  <button type="button" class="btn"><span class="btn_txt">다크모드</span></button>
+  <h1 class="tit">버튼 토글을 이용한 다크 모드 설정 </h1>
+  <h2 class="sub_tit">- :root[data-theme=""]</h2>
+  <div class="txt_box"><span class="txt_transition">LIGHT THEME</span></div>
+  <button type="button" class="btn"><span class="btn_txt txt_transition">다크모드</span></button>
 
   <script>
-  // javaScript
-  const subTit = document.querySelector('.sub_tit');
+  const subTit = document.getElementsByClassName('txt_transition');
+  console.log(subTit)
   const btn = document.querySelector('.btn');
   const btnTxt = document.querySelector('.btn_txt');
 
@@ -81,28 +51,15 @@
     if (document.documentElement.getAttribute('data-theme') === 'light') {
       // Light to Dark
       document.documentElement.setAttribute('data-theme', 'dark');
-      subTit.innerHTML = 'Dark Theme';
+      subTit[0].innerHTML = 'DARK THEME';
       btnTxt.innerHTML = '라이트 모드';
     } else  {
       // Dark to Light
       document.documentElement.setAttribute('data-theme', 'light');
-      subTit.innerHTML = 'Light Theme';
+      subTit[0].innerHTML = 'LIGHT THEME';
       btnTxt.innerHTML = '다크 모드';
     }
   })
-
-  // jQuery
-  // $(function(){
-  //   $('.chk_light').on('click',function(){
-  //     if($(this).is(':checked') == true)  {
-  //       $('html').removeClass('dark')
-  //       $('html').addClass('light');
-  //     } else {
-  //       $('html').removeClass('light')
-  //       $('html').addClass('dark');
-  //     }
-  //   });
-  // });
   </script>
 </body>
 </html>

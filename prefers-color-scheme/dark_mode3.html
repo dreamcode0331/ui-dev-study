@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>prefers-color-scheme 예제2</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>버튼 토글을 이용한 다크 모드 설정</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
   <style>
     /* 안드로이드 환경
       삼성 인터넷 자체는 다크모드를 지원하지 않음
@@ -19,20 +20,24 @@
       --color1:gray;
       --color2:#fff;
       --color3:#000;
+
     }
     :root.dark{
-      --color1:lightgray;
-      --color2:#000;
+      --color1:#fff;
+      --color2:#111;
       --color3:#fff;
     }
     body{background:var(--color2)}
-    h1{color:var(--color3)}
-    nav li a{border:1px solid var(--color3);background:var(--color1);color:var(--color2)}
+    .tit, .sub_tit{color:var(--color3)}
+    nav{border-bottom:1px solid var(--color1)}
+    nav li a{border:1px solid var(--color1);background:var(--color1);color:var(--color2)}
+    .btn{border:1px solid var(--color3);color:var(--color3)}
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
 </head>
 <body>
-  <h1>다크모드 감지</h1>
+  <h1 class="tit">버튼 토글을 이용한 다크 모드 설정</h1>
+  <h2 class="sub_tit">- class</h2>
   <nav>
     <ul>
       <li><a href="">메뉴1</a></li>
@@ -41,14 +46,16 @@
       <li><a href="">메뉴4</a></li>
     </ul>
   </nav>
-  <button type="button" class="btn">다크모드</button>
+  <button type="button" class="btn"><span class="btn_txt txt_transition">다크모드</span></button>
   <script>
     $(function(){
       $('.btn').on('click',function(){
         if($('html').hasClass('dark'))  {
-          $('html').removeClass('dark')
+          $('html').removeClass('dark');
+          $('.btn_txt').text('다크 모드');
         } else {
           $('html').addClass('dark');
+          $('.btn_txt').text('라이트 모드');
         }
       });
     });

@@ -4,26 +4,30 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>prefers-color-scheme 예제1</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>OS(Operating System)를 통한 다크 모드 설정</title>
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
   <style>
-    .btn:hover{transition:all 1s;transform:scale(2)}
     @media (prefers-color-scheme: dark) {
-      body{background:#222}
-      h1, .tit, .desc{color:#fff}
+      body{background:#111}
+      .tit, .sub_tit, .desc{color:#fff}
       .tit:before{background:#fff}
-      nav li a{border:1px solid #fff;background:#d3d3d3;color:#000}
-      .btn{background:#d3d3d3}
-    }
-    @media (prefers-reduced-motion) {
-      .btn:hover{transform:none}
+      nav{border-bottom:1px solid #fff}
+      nav li a{border:1px solid #fff;background:#fff;color:#000}
+      .img_box{border: 1px solid #fff}
     }
   </style>
 </head>
 <body>
-  <h1>prefers-color-scheme / prefers-reduced-motion</h1>
-  <span class="tit">prefers-color-scheme</span>
-  <span class="desc">테스트 하려면 개발자도구를 통해 해야 함.<br>(개발자도구 > 도구 더보기 > 렌더링 > CSS 미디어 기능 prefers-color-scheme 에뮬레이션)</span>
+  <h1 class="tit">OS(Operating System)를 통한 다크 모드 설정</h1>
+  <h2 class="sub_tit">- prefers-color-scheme</h2>
+  <p class="desc">
+    다크 모드를 구현할 수 있는 방법 중 하나인 <b>CSS Media Query 'prefers-color-scheme'</b>.<br>
+    해당 파일에는 아래 이미지와 같이 인라인스타일로 미디어 쿼리가 선언되어 있으며,<br>
+    미디어 쿼리의 동작여부를 확인하기 위해서는 개발자도구를 통해 테스트해야 합니다.<br>
+    (개발자도구 > 도구 더보기 > 렌더링 > CSS 미디어 기능 prefers-color-scheme 에뮬레이션)<br>
+  </p>
+  <div class="img_box"><img src="../img/img.PNG" alt="prefers-color-scheme 다크모드 미디어쿼리"></div>
   <nav>
     <ul>
       <li><a href="">메뉴1</a></li>
@@ -32,8 +36,5 @@
       <li><a href="">메뉴4</a></li>
     </ul>
   </nav>
-  <span class="tit">prefers-reduced-motion</span>
-  <span class="desc">OS 애니메이션 꺼놓은 사용자들에게만 적용. 테스트 하려면 개발자도구를 통해 해야 함.<br>(개발자도구 > 도구 더보기 > 렌더링 > CSS 미디어 기능 prefers-reduced-motion 에뮬레이션)</span>
-  <button type="button" class="btn">다크모드</button>
 </body>
 </html>

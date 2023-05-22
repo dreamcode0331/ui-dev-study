@@ -1,0 +1,21 @@
+@charset "utf-8";
+body{margin:0 auto;padding:30px;max-width:700px;background:#fff}
+
+img{max-width:100%}
+nav{margin-top:45px;padding-bottom:10px;border-bottom:1px solid gray;text-align:center}
+nav li{display:inline-block}
+nav li a{display:block;padding:5px 30px;border:1px solid gray;border-radius:5px;background:#fff;font-size:18px;line-height:24px;text-align:center;color:gray}
+.sub_tit{padding:10px 0 20px;}
+.sub_tit:first-child{padding-top:0}
+.txt_box{margin: 0 auto;padding:20px;width:100%;font-size:60px;text-align:center;border:1px solid #000;box-sizing:border-box}
+.txt_transition{transition:all 0.5s}
+.desc{padding-left:10px;font-size:14px;line-height:26px}
+.img_box{display:block;margin:20px auto 0;width:600px;border: 1px solid #000}
+.btn{display:block;margin:50px auto 0;width:220px;height:36px;border:1px solid #000;font-size:18px;line-height:24px}
+
+/* dark_mode1.html */
+.theme_box{display:inline-block;margin:20px;width:300px;height:100px;line-height:100px;text-align:center}
+.theme-a{background:#dca;color:#731}
+.theme-b{background:#447;color:#bbd}
+.color_scheme_box{margin:20px 10px 10px 20px;line-height:32px}
+.color_scheme_box img{vertical-align:top}
