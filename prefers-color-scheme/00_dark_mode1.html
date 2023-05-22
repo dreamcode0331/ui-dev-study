@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prefers-color-scheme</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      .theme-a.adaptive {
+        background: #753;
+        color: #dcb;
+        outline: 5px dashed #000;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      .theme-b.adaptive {
+        background: #bcd;
+        color: #334;
+        outline: 5px dotted #000;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>prefers-color-scheme</h1>
+  <span class="tit">dark or light 테마 감지</span>
+  <div class="theme_box theme-a">Theme A (initial)</div>
+  <div class="theme_box theme-a adaptive">Theme A (changed if dark preferred)</div>
+  <div class="theme_box theme-b">Theme B (initial)</div>
+  <div class="theme_box theme-b adaptive">Theme B (changed if light preferred)</div>
+  <span class="tit">Color scheme 상속</span>
+  <div class="color_scheme_box">
+    <img /> color-scheme OS에서 상속
+  </div>
+  <div class="color_scheme_box" style="color-scheme: light">
+    <img /> color-scheme 임베딩 요소에서 상속
+  </div>
+  <div class="color_scheme_box" style="color-scheme: dark">
+    <img /> color-scheme 임베딩 요소에서 상속
+  </div>
+  <!-- Embed an SVG for all <img> elements -->
+  <script>
+    for (let img of document.querySelectorAll("img")) {
+      img.alt = "circle";
+      img.src =
+        "data:image/svg+xml;base64," +
+        btoa(`
+        <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <style>
+            :root { color: blue }
+            @media (prefers-color-scheme: dark) {
+              :root { color: purple }
+            }
+          </style>
+          <circle fill="currentColor" cx="16" cy="16" r="16"/>
+        </svg>
+      `);
+    }
+  </script>
+</body>
+</html>

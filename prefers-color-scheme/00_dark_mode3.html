@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prefers-color-scheme 예제2</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* 안드로이드 환경
+      삼성 인터넷 자체는 다크모드를 지원하지 않음
+      크롬에서는 가능.
+      설정-디스플레이-다크
+    */
+    /* css변수 사용은 ie에서 미지원
+      모바일 작업 환경에서 권장 또는 엣지까지는 ok 
+    */
+    :root{
+      --color1:gray;
+      --color2:#fff;
+      --color3:#000;
+    }
+    :root.dark{
+      --color1:lightgray;
+      --color2:#000;
+      --color3:#fff;
+    }
+    body{background:var(--color2)}
+    h1{color:var(--color3)}
+    nav li a{border:1px solid var(--color3);background:var(--color1);color:var(--color2)}
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+</head>
+<body>
+  <h1>다크모드 감지</h1>
+  <nav>
+    <ul>
+      <li><a href="">메뉴1</a></li>
+      <li><a href="">메뉴2</a></li>
+      <li><a href="">메뉴3</a></li>
+      <li><a href="">메뉴4</a></li>
+    </ul>
+  </nav>
+  <button type="button" class="btn">다크모드</button>
+  <script>
+    $(function(){
+      $('.btn').on('click',function(){
+        if($('html').hasClass('dark'))  {
+          $('html').removeClass('dark')
+        } else {
+          $('html').addClass('dark');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
