@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>prefers-color-scheme 예제1</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .btn:hover{transition:all 1s;transform:scale(2)}
+    @media (prefers-color-scheme: dark) {
+      body{background:#222}
+      h1, .tit, .desc{color:#fff}
+      .tit:before{background:#fff}
+      nav li a{border:1px solid #fff;background:#d3d3d3;color:#000}
+      .btn{background:#d3d3d3}
+    }
+    @media (prefers-reduced-motion) {
+      .btn:hover{transform:none}
+    }
+  </style>
+</head>
+<body>
+  <h1>prefers-color-scheme / prefers-reduced-motion</h1>
+  <span class="tit">prefers-color-scheme</span>
+  <span class="desc">테스트 하려면 개발자도구를 통해 해야 함.<br>(개발자도구 > 도구 더보기 > 렌더링 > CSS 미디어 기능 prefers-color-scheme 에뮬레이션)</span>
+  <nav>
+    <ul>
+      <li><a href="">메뉴1</a></li>
+      <li><a href="">메뉴2</a></li>
+      <li><a href="">메뉴3</a></li>
+      <li><a href="">메뉴4</a></li>
+    </ul>
+  </nav>
+  <span class="tit">prefers-reduced-motion</span>
+  <span class="desc">OS 애니메이션 꺼놓은 사용자들에게만 적용. 테스트 하려면 개발자도구를 통해 해야 함.<br>(개발자도구 > 도구 더보기 > 렌더링 > CSS 미디어 기능 prefers-reduced-motion 에뮬레이션)</span>
+  <button type="button" class="btn">다크모드</button>
+</body>
+</html>
